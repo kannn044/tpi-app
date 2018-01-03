@@ -1,0 +1,14 @@
+{
+  "name": "TPIPL",
+  "app_id": "34aa11b4",
+  "type": "ionic1",
+  "integrations": {
+    "cordova": {}
+  },
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}

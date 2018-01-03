@@ -1,0 +1,87 @@
+
+<ion-view view-title="เก็บเข้า Rack" >
+  <ion-content class="Rack input-custom containner padding-left padding-right padding-top">
+
+        <div class="row text-right padding-top">
+          <label class="col col-center col-25 text-danger">Pallet :</label>
+          <div class="col col-45"><input type="text" ng-model="data.PalletBarcode" class="form-control" id="input-PalletNoBar" placeholder="Enter Text" uppercased></div>
+          <div class="col text-center">
+            <a class="button-icon icon ion-ios-camera-outline"></a>
+            </div>
+          <div class="col col-20">
+            <button class="button button-block button-dark button-save no-margin" ng-click="checkBarCode()">ค้นหา</button>
+          </div>
+        </div>
+        <div class="row text-right">
+          <div class="col col-center col-25"><label> สินค้า : </label></div>
+          <div class="col"><input type="text" ng-model="data.Product" class="form-control" placeholder="Enter Text" readonly></div>
+        </div>
+        <div class="row text-right">
+          <div class="col col-center col-25"><label> Lot :</label></div>
+          <div class="col"><input type="text" ng-model="data.Lot" class="form-control" placeholder="Enter Text" readonly></div>
+        </div>
+        <div class="row">
+          <div class="col col-center col-25 text-right"><label> จำนวน : </label></div>
+          <div class="col"><input type="text" ng-model="data.CountTagRoll" class="form-control" placeholder="" readonly></div>
+          <label class="col col-10 col-center">QTY.</label>
+          <div class="col"><input type="text" ng-model="data.WeightTagKG" class="form-control" placeholder="" readonly></div>
+          <label class="col col-10 col-center">KG.</label>
+          <div class="col"><input type="text" ng-model="data.QtyTagM" class="form-control" placeholder="" readonly></div>
+          <label class="col col-10 col-center">M.</label>
+        </div>
+        <div class="row text-right">
+          <div class="col col-center col-25"><label> วันที่รับ : </label></div>
+          <div class="col"><input type="text" ng-model="data.OrderDate" class="form-control" placeholder="" readonly></div>
+        </div>
+        <div class="row text-right">
+          <div class="col col-center col-25"><label> Rack : </label></div>
+          <div class="col"><input type="text" ng-model="data.Rack" class="form-control" placeholder="Enter Text" readonly></div>
+        </div>
+        <div class="row text-right">
+          <div class="col col-center col-25"><label> เลขที่อ้างอิง : </label></div>
+          <div class="col"><input type="text" ng-model="data.OrderNo" class="form-control" placeholder="Enter Text" readonly></div>
+        </div>    
+        <div class="row text-right">
+          <div class="col col-center col-25"><label> Rack/FL/จำนวน : </label></div>
+          <div class="col"><input type="text" ng-model="data.Rd_FL_Fullwork" class="form-control" placeholder="Enter Text" readonly></div>
+        </div> 
+        <div class="row text-right">
+          <div class="col col-center col-25"><label> หมายเหตุ :</label></div>
+          <div class="col"><input type="text" ng-model="data.RefNo1" class="form-control" placeholder="Enter Text" readonly></div>
+        </div> 
+        <div class="row">
+          <div class="col col-center col-25 text-right"><label> สถานะพาเลท : </label></div>
+          <div class="col"><input type="text" ng-model="data.PalletStatusId" class="form-control" placeholder="WH" style="margin-right: 2px;" readonly></div>
+          <div class="col col-center col-15 text-right"><label class=" text-danger">เปลี่ยน :</label></div>
+          <div class="col">
+            <input type="text" ng-model="data.PalletStatus" class="form-control" placeholder="RD" style="margin-right: 2px;" readonly>
+            <!--<select width="100%" style="width: 100%; height: 32px; " id="select-PalletStatus" ng-disabled="isDisable" ng-change="changePalletStatus(data.PalletStatus)" ng-model="data.PalletStatus">-->
+            <!--<select width="100%" style="width: 100%; height: 32px; " id="select-PalletStatus" ng-disabled="true" ng-model="data.PalletStatus">
+              <option value="">{{data.PalletStatus_Id}}</option>-->
+              <!--<option value="">เลือก</option>-->
+              <!--<option ng-if="getStatusPalletList" ng-repeat="(key, value) in getStatusPalletList | orderObjectBy:'PalletStatus_Index':false " value="{{value.PalletStatus_Index}}">{{value.PalletStatus_Id}}</option>-->
+            <!--</select>-->
+          </div>
+        </div>
+        <div class="row text-right">
+          <div class="col col-center col-25"><label> ตำแหน่งแนะนำ : </label></div>
+          <div class="col col-15"><input type="text" ng-model="data.HH" class="form-control col-100 input-skyblue" placeholder="WH" readonly></div>
+          <div class="col col-40"><input type="text" ng-model="data.Location" class="form-control col-100 input-skyblue"  readonly></div>
+        </div>
+        <div class="row text-right">
+          <label class="col col-center col-25 text-danger">ตำแหน่งจริง :</label>
+          <div class="col"><input type="text" ng-model="data.locationScan" class="form-control" id="input-location" placeholder="Enter Text"></div>
+          <div class="col-10 col-center text-center"><a class="button-icon icon ion-ios-camera-outline" ng-click="scanLocation()"></a></div>
+        </div>
+        
+        <br>
+        <div class="text-center"><button class="button button-dark button-select " ng-click="save(data)">บันทึก</button></div>
+
+  </ion-content>
+  
+  <ion-footer-bar>
+    <div class="bar bar-footer fooExit">
+      <a class="item-icon-left"><i class="icon ion-arrow-left-c fooExit" ng-click="GoBack()"></i></a>
+    </div>
+  </ion-footer-bar>
+</ion-view>

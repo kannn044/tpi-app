@@ -1,0 +1,61 @@
+
+<ion-view view-title="Clear Pallet" >
+  <ion-content class="ClearPallet input-custom containner padding-left padding-right padding-top">
+
+        <div class="item-input">
+          <div class="col col-center"><label class="text-danger ">Pallet No. :</label></div>
+          <div class="col col-45">
+            <input type="text" class="form-control" ng-model="data.PalletBarcode" id="input-PalletNoBar" placeholder="Enter Text" uppercased>
+          </div>
+          <div class="col text-center">
+            <a class="button-icon icon ion-ios-camera-outline button-scanbarcode " ng-click="scanBarcode()"></a>
+          </div>
+          <div class="col col-20">
+            <button class="button button-block button-dark button-save pull-right no-margin" ng-click="searchPallet()">ค้นหา</button>
+          </div>
+        </div>
+
+        <div class="padding">
+          <div class="item-input item-icon-right"><label>รายการ</label>
+            <div class="assertive item-note icon"><label>**โปรดกดเลือกข้อมูลในตาราง แล้วกดลบ</label></div>
+          </div>
+          <ion-scroll zooming="false" has-bouncing="false" direction="xy" ng-style="{'height': (dataTableItem.length > 10)? '570px':'auto'}" >
+            <table class="table table-bordered table-responsive" >
+              <thead>
+                <tr style="background-color: #eeeeee">
+                  <th>Seq</th>
+                  <th>Pallet No</th>
+                </tr>
+              </thead>
+              <tbody >
+                <tr ng-if="dataTableItem.length <= 0">
+                  <td colspan="2">ไม่มีรายการ</td>
+                </tr>
+                <tr ng-if="dataTableItem.length > 0" ng-repeat="(n, v) in dataTableItem track by $index" ng-click="setSelected($index)" ng-class="{selected: v.isSelect == true}">
+                  <td>{{$index+1}}</td>
+                  <td>{{v.Pallet_No}}</td>
+                </tr>
+              </tbody>
+            </table>        
+          </ion-scroll>
+          <div class="row" style="margin: 0px;">
+            <div class="col-50 text-letf"><button class="button button-assertive button-delete" ng-click="deleted()">ลบ</button></div>
+            <div class="col-50 text-right"><input type="text" ng-value="dataTableItem.length" ng-model="data.countRow" class="form-control col-30 pull-right text-right input-skyblue" placeholder="0" readonly></div>
+          </div>
+        </div>
+
+        <br>
+        <!--<div class="assertive">**Call Clear_Pallet Error Parameter 'ads'</div>-->
+        <!--<div class="row">
+          <input type="text" class="form-control" ng-model="ads.value" placeholder="Enter Parameter">
+        </div>-->
+        <div class="text-center"><button class="button button-dark button-select" ng-click="save()">ยืนยัน</button></div>
+
+  </ion-content>
+  
+  <ion-footer-bar>
+    <div class="bar bar-footer fooExit">
+      <a class="item-icon-left"><i class="icon ion-arrow-left-c fooExit" ng-click="GoBack()"></i></a>
+    </div>
+  </ion-footer-bar>
+</ion-view>

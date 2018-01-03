@@ -1,0 +1,93 @@
+
+<ion-view view-title="Packing Roll" >
+  <ion-content class="PackingRoll input-custom containner padding-left padding-right padding-top">
+    <form role="form" name="myForm" novalidate>
+
+        <div class="row padding-top">
+          <div class="col col-center col-20 text-right"><label>Bag Order : </label></div>
+          <div class="col">
+            <select id="orderItem" width="100%" style="width: 100%; height: 32px; " required ng-change="changeOrder(data.Order)" ng-model="data.Order">
+              <option value="">เลือก</option>
+              <option ng-if="getBaggingOrderHeaderList" ng-repeat="(key, value) in getBaggingOrderHeaderList | orderObjectBy:'BaggingOrder_No':false " value="{{value.BaggingOrder_No+','+value.BaggingOrder_Index}}">{{value.BaggingOrder_No}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row text-right">
+          <label class="col col-center col-20 "><label class="text-danger">Barcode : </label></label>
+          <div class="col col-60"><input type="text" id="barcode" ng-model="data.PalletBarcode"  value="{{data.PalletBarcode}}" class="form-control" placeholder="Enter Text"></div>
+          <div class="col text-center"><a class=" button-icon icon ion-ios-camera-outline" ng-disabled="isDisable" ng-click="scanBarcode(data)"></a></div>
+        </div>
+        <div class="text-center"><button class="button button-dark button-select" ng-click="save(data)" ng-disabled="isDisable" >บันทึก</button></div>
+
+        <div ><span class="header-table-title">Detail</span></div>
+        <div class="item">
+          <div class="row text-right">
+            <div class="col col-center col-25"><label>Grade : </label></div>
+            <div class="col-60"><input type="text" ng-model="data.grade" value="{{data.grade}}"  class="form-control" readonly></div>
+          </div>
+          <div class="row text-right">
+            <div class="col col-center col-25"><label> Lot : </label></div>
+            <div class="col-60"><input type="text" ng-model="data.lot" value="{{data.lot}}"  class="form-control" readonly></div>
+          </div>
+          <div class="row text-right">
+            <div class="col col-center col-25"><label> Roll : </label></div>
+            <div class="col-60"><input type="text" ng-model="data.roll" value="{{data.roll}}"  class="form-control" readonly></div>
+          </div>
+          <div class="row text-right">
+            <div class="col col-center col-25"><label> Weight : </label></div>
+            <div class="col-60"><input type="text" ng-model="data.weigth" value="{{data.weigth}}"  class="form-control" readonly></div>
+            <label class="col col-cetner text-left"> KG. </label>
+          </div>
+          <div class="row text-right">
+            <label class="col col-center col-25"><label class="text-danger"> Length : </label></label>
+            <div class="col-60"><input id="textlength" ng-model="data.length" value="{{data.length}}"  class="form-control" ></div>
+            <label class="col col-cetner text-left"> M. </label>
+          </div>
+        </div>
+        
+        <br>
+
+        <div ><span class="header-table-title">History</span></div>
+        <div class="item">
+          <ion-scroll zooming="false" has-bouncing="false" direction="xy" style="max-height:25vh; border: 1px solid #ddd;">
+              <table class="table table-bordered no-margin">
+                <thead>
+                  <tr>
+                    <th>Roll No.</th>
+                    <th>Weight</th>
+                    <th>Lot</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr ng-if="rollList.length == 0">
+                  <td colspan="9">ไม่มี history สำหรับรายการนี้</td>
+                </tr>
+                <tr ng-if="rollList.length > 0" ng-repeat="(n, v) in rollList track by $index">
+                  <td>{{v.Roll_No}}</td>
+                  <td>{{v.Weight_Act}}</td>
+                  <td>{{v.PLot}}</td>
+                </tr>
+                </tbody>
+              </table>
+          </ion-scroll>
+
+          <div class="padding-top-15">
+            <ul class="list-inline text-right">
+              <li class="col-30"><input type="text" name=""  ng-model="data.count" value="{{data.count}}"   class="form-control text-right input-skyblue" placeholder="0" readonly></li>
+              <li>/</li>
+              <li class="col-30"><input type="text" name=""  ng-model="data.total" value="{{data.total}}"   class="form-control text-right input-skyblue" placeholder="0" readonly></li>
+            </ul>
+          </div>
+
+          </div>
+          
+
+    </form>
+  </ion-content>
+  
+  <ion-footer-bar>
+    <div class="bar bar-footer fooExit">
+      <a class="item-icon-left"><i class="icon ion-arrow-left-c fooExit" ng-click="GoBack()"></i></a>
+    </div>
+  </ion-footer-bar>
+</ion-view>
